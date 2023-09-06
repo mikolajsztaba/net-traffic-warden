@@ -2,7 +2,7 @@
 import argparse
 
 from charts.chart import example_chart
-
+from charts.data import calculate_average
 
 def test_function(test):
     print(test)
@@ -17,7 +17,8 @@ def main():
 
     args = parser.parse_args()
 
-    test_function(test=args.email)
+    # test_function(test=args.email)
+    calculate_average()
 
 
 if __name__ == "__main__":
