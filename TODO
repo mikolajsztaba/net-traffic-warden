@@ -1,1 +1,5 @@
-Dodanie flake, pylint i tox.
+TODO:
+- basic funkcje do ogarniania przepływnosci, obciazen i próba przerzucenia tego do grafu / postaci liczbowej
+
+Optional:
+- dodanie flake, pylint i tox.

@@ -1,9 +1,26 @@
 # Main function
 import argparse
+import logging
+
+from datetime import datetime
 
 from charts.chart import example_chart
 from charts.data import calculate_average
 from ssh.ssh_connection import connect_to_ssh, execute_ssh_command, close_ssh_connection
+
+current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+log_filename = f'logs/{current_datetime}.log'
+
+# Configure the logger
+logging.basicConfig(
+    filename=log_filename,  # Use the generated log file name
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Create a logger instance
+logger = logging.getLogger()
+
 
 def test_function(test):
     print(test)
@@ -18,13 +35,15 @@ def main():
 
     args = parser.parse_args()
 
+    logger.info('test')
+
     # test_function(test=args.email)
     # calculate_average()
 
     # SSH TESTS
-    ssh_client = connect_to_ssh('###', 22, '###', '###')
-    return_code = execute_ssh_command(ssh_client, 'ls')
-    close_ssh_connection(ssh_client)
+    # ssh_client = connect_to_ssh('###', 22, '###', '###')
+    # return_code = execute_ssh_command(ssh_client, 'ls')
+    # close_ssh_connection(ssh_client)
 
 
 if __name__ == "__main__":
