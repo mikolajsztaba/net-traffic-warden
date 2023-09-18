@@ -1,5 +1,8 @@
 TODO:
 - basic funkcje do ogarniania przepływnosci, obciazen i próba przerzucenia tego do grafu / postaci liczbowej
+- refactor tego co jest
+
+PODPIECIE WYNIKOW Z PRZEPLYWNOSCI DO TEGO CO RYSUJE GRAFY
 
 Optional:
 - dodanie flake, pylint i tox.
