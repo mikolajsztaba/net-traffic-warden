@@ -11,7 +11,7 @@ from monitoring.link_monitor import monitor_network_and_save_to_csv
 
 
 current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-log_filename = f'logs/{current_datetime}.log'
+log_filename = f'app/logs/{current_datetime}.log'
 
 # Configure the logger
 logging.basicConfig(
@@ -39,7 +39,7 @@ def main():
 
     logger.info('test')
 
-    monitor_network_and_save_to_csv(csv_file='link_data/test.csv', duration=5)
+    monitor_network_and_save_to_csv(csv_file='app/link_data/test.csv', duration=5)
     # test_function(test=args.email)
     # calculate_average()
 
