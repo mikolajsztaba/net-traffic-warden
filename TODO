@@ -1,5 +1,5 @@
 TODO:
 - basic funkcje do ogarniania przepływnosci, obciazen i próba przerzucenia tego do grafu / postaci liczbowej
-- refactor tego co jest (ZEBY SPELNIALO WYNIKI FLAKE'A I PYLINTA)
+- popatrzec na te zmienne i mozna cos pokminic, aby doprowadzic obecny skrypt do bycia top
 
 PODPIECIE WYNIKOW Z PRZEPLYWNOSCI DO TEGO CO RYSUJE GRAFY

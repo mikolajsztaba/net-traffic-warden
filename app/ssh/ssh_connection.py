@@ -1,22 +1,38 @@
+"""
+SSH CONNECTION DOCSTRING
+"""
 import paramiko
 
 
 def connect_to_ssh(hostname, port, username, password):
+    """
+    :param hostname:
+    :param port:
+    :param username:
+    :param password:
+    :return:
+    """
     try:
         # Create an SSH client
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
         # Connect to the SSH server
-        ssh_client.connect(hostname, port=port, username=username, password=password)
+        ssh_client.connect(hostname, port=port,
+                           username=username, password=password)
 
         return ssh_client
-    except Exception as e:
+    except paramiko.SSHException as e:
         print("Error connecting to SSH:", str(e))
         return None
 
 
 def execute_ssh_command(ssh_client, command):
+    """
+    :param ssh_client:
+    :param command:
+    :return:
+    """
     try:
         # Execute the command on the remote server
         stdin, stdout, stderr = ssh_client.exec_command(command)
@@ -28,14 +44,18 @@ def execute_ssh_command(ssh_client, command):
         command_output = stdout.read().decode('utf-8')
 
         return return_code, command_output
-    except Exception as e:
+    except paramiko.SSHException as e:
         print("Error executing SSH command:", str(e))
         return None, str(e)
 
 
 def close_ssh_connection(ssh_client):
+    """
+    :param ssh_client:
+    :return:
+    """
     try:
         # Close the SSH connection
         ssh_client.close()
-    except Exception as e:
+    except paramiko.SSHException as e:
         print("Error closing SSH connection:", str(e))

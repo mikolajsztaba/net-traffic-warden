@@ -1,14 +1,20 @@
+"""
+DATA DOCSTRING
+"""
 import csv
 
 
 def calculate_average():
+    """
+    :return:
+    """
     # Initialize variables to store the sum and count for each column
     sum_column1 = 0
     sum_column2 = 0
     count = 0
 
     # Open and read the CSV file
-    with open('data/random_points.csv', 'r') as csvfile:
+    with open('data/random_points.csv', 'r', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         next(reader)  # Skip the header row if it exists
 
