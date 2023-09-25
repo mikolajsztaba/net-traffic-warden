@@ -12,11 +12,11 @@ def init_plot():
     """
     :return:
     """
-    fig, ax = plt.subplots()
-    sc = ax.scatter([], [], c='b', marker='o')
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0, 10)
-    return fig, ax, sc
+    fig, axis = plt.subplots()
+    scatter_plot = axis.scatter([], [], c='b', marker='o')
+    axis.set_xlim(0, 10)
+    axis.set_ylim(0, 10)
+    return fig, axis, scatter_plot
 
 
 # Function to initialize the CSV file
@@ -31,22 +31,22 @@ def init_csv(filename):
 
 
 # Function to generate and save random points
-def generate_and_save_random_points(num_points, sc, csv_filename):
+def generate_and_save_random_points(num_points, scatter_plot, csv_filename):
     """
     :param num_points:
     :param sc:
     :param csv_filename:
     :return:
     """
-    x = np.random.randint(0, 11, num_points)
-    y = np.random.randint(0, 11, num_points)
-    sc.set_offsets(np.column_stack((x, y)))
+    x_value = np.random.randint(0, 11, num_points)
+    y_value = np.random.randint(0, 11, num_points)
+    scatter_plot.set_offsets(np.column_stack((x_value, y_value)))
 
     # Append the data to the CSV file
     with open(csv_filename, 'a', newline='', encoding='utf-8') as csvfile:
         csv_writer = csv.writer(csvfile)
         for i in range(num_points):
-            csv_writer.writerow([x[i], y[i]])
+            csv_writer.writerow([x_value[i], y_value[i]])
 
 
 # Main function
@@ -55,10 +55,12 @@ def example_chart():
 
     :return:
     """
-    csv_filename = 'data/random_points.csv'
+    csv_filename = 'app/data/random_points.csv'
     init_csv(csv_filename)
-    fig, ax, sc = init_plot()
+    fig, axis, scatter_plot = init_plot()
+
+    print(fig, axis)
 
     while True:
-        generate_and_save_random_points(10, sc, csv_filename)
+        generate_and_save_random_points(10, scatter_plot, csv_filename)
         plt.pause(1)  # Pause for a moment to allow visualization

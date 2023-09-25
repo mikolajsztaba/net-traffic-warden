@@ -22,8 +22,8 @@ def connect_to_ssh(hostname, port, username, password):
                            username=username, password=password)
 
         return ssh_client
-    except paramiko.SSHException as e:
-        print("Error connecting to SSH:", str(e))
+    except paramiko.SSHException as error:
+        print("Error connecting to SSH:", str(error))
         return None
 
 
@@ -37,6 +37,8 @@ def execute_ssh_command(ssh_client, command):
         # Execute the command on the remote server
         stdin, stdout, stderr = ssh_client.exec_command(command)
 
+        print(stdin, stderr)
+
         # Wait for the command to finish and get the return code
         return_code = stdout.channel.recv_exit_status()
 
@@ -44,9 +46,9 @@ def execute_ssh_command(ssh_client, command):
         command_output = stdout.read().decode('utf-8')
 
         return return_code, command_output
-    except paramiko.SSHException as e:
-        print("Error executing SSH command:", str(e))
-        return None, str(e)
+    except paramiko.SSHException as error:
+        print("Error executing SSH command:", str(error))
+        return None, str(error)
 
 
 def close_ssh_connection(ssh_client):
@@ -57,5 +59,5 @@ def close_ssh_connection(ssh_client):
     try:
         # Close the SSH connection
         ssh_client.close()
-    except paramiko.SSHException as e:
-        print("Error closing SSH connection:", str(e))
+    except paramiko.SSHException as error:
+        print("Error closing SSH connection:", str(error))

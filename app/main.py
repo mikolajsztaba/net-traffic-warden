@@ -48,20 +48,23 @@ def main():
                         type=str, help="The user's email")
     parser.add_argument("-p", "--phone",
                         type=str, help="The user's phone number")
-
+    # PARSING CLI ARGUMENTS
     args = parser.parse_args()
 
-    logger.info('test')
+    logger.info(args)
+
+    # SSH TESTS
+    ssh_client = connect_to_ssh('###', 22,
+                                '###', '###')
+    return_code = execute_ssh_command(ssh_client, 'ls')
+    logger.info(return_code)
+    close_ssh_connection(ssh_client)
 
     monitor_network_and_save_to_csv(csv_file='app/link_data/test.csv',
                                     duration=5)
-    # test_function(test=args.email)
-    # calculate_average()
 
-    # SSH TESTS
-    # ssh_client = connect_to_ssh('###', 22, '###', '###')
-    # return_code = execute_ssh_command(ssh_client, 'ls')
-    # close_ssh_connection(ssh_client)
+    test_function(test=args.email)
+    calculate_average()
 
 
 if __name__ == "__main__":
