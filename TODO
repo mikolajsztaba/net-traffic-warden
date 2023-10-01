@@ -2,4 +2,15 @@ TODO:
 - basic funkcje do ogarniania przepływnosci, obciazen i próba przerzucenia tego do grafu / postaci liczbowej
 - kolejna funkcjonalnosc np. dzialajacego cli w pewnej pętli i wykonywania checków co x czas itp
 
+NAPRAWIĆ TEGO LOGGERA CO Z NIM JEST NIE TAK
+
+
 PODPIECIE WYNIKOW Z PRZEPLYWNOSCI DO TEGO CO RYSUJE GRAFY
+
+SPOTKANIE Z DOKTOREM WAJDĄ:
+1. Netflow ciscowe lub SNMP protokoly
+2. LISTA MIBÓW
+3. MININET PYTHON API (jest ytylko to bedzie wymagane do runnowania tylko na linuxie i sprawdzenie czy mininet jest zainstalowany)
+http://mininet.org/api/annotated.html
+
+PRZYGOTOWAĆ WSTĘPNĄ LISTĘ NA PIĄTEK 
