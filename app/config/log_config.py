@@ -6,9 +6,12 @@ def setup_logging():
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)  # Set the root logger's level to DEBUG
 
+    # turning off alerts for matplotlib font manager
+    logging.getLogger('matplotlib.font_manager').disabled = True
+
     # Create a log file with a timestamp
     current_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_filename = f"mylog_{current_datetime}.log"
+    log_filename = f"app/logs/console_logs/log_{current_datetime}.log"
 
     # Create a file handler and specify the log file with timestamp
     file_handler = logging.FileHandler(log_filename)

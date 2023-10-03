@@ -19,20 +19,9 @@ from monitoring.link_monitor import monitor_network_and_save_to_csv
 from system_check.system_requirements import check_req
 
 
-# current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-# log_filename = f'app/logs/{current_datetime}.log'
-#
-# # Configure the logger
-# logging.basicConfig(
-#     filename=log_filename,  # Use the generated log file name
-#     level=logging.DEBUG,
-#     format='%(asctime)s - %(levelname)s - %(message)s'
-# )
-
-# Create a logger instance
-# logger = logging.getLogger()
-
+# Logger configuration
 logger = logging.getLogger(__name__)
+
 
 def test_function(test):
     """
@@ -64,11 +53,12 @@ def main():
     check_req()
 
     # SSH TESTS
-    ssh_client = connect_to_ssh('###', 22,
-                                '###', '###')
-    return_code = execute_ssh_command(ssh_client, 'ls')
-    logger.info(return_code)
-    close_ssh_connection(ssh_client)
+    # ssh_client = connect_to_ssh('###', 22,
+    #                             '###', '###')
+    # return_code = execute_ssh_command(ssh_client, 'ls')
+    logger.info(2)
+    # logger.info(return_code)
+    # close_ssh_connection(ssh_client)
 
     monitor_network_and_save_to_csv(csv_file='app/link_data/test.csv',
                                     duration=5)

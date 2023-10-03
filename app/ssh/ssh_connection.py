@@ -2,6 +2,9 @@
 SSH CONNECTION DOCSTRING
 """
 import paramiko
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def connect_to_ssh(hostname, port, username, password):

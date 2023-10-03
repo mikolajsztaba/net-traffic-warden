@@ -2,14 +2,13 @@ TODO:
 - basic funkcje do ogarniania przepływnosci, obciazen i próba przerzucenia tego do grafu / postaci liczbowej
 - kolejna funkcjonalnosc np. dzialajacego cli w pewnej pętli i wykonywania checków co x czas itp
 
-NAPRAWIĆ TEGO LOGGERA CO Z NIM JEST NIE TAK
-
-
 PODPIECIE WYNIKOW Z PRZEPLYWNOSCI DO TEGO CO RYSUJE GRAFY
 
 SPOTKANIE Z DOKTOREM WAJDĄ:
 1. Netflow ciscowe lub SNMP protokoly
-2. LISTA MIBÓW
+    - jest PYSNMP (ostatnio wspierane 4 lata temu, ale stabilna to paczka i pojdzie na tym pythonie co mam teraz czyli 3.7.7)
+    - Neftlow ciscowe jest, ale srednio jest aktualne i wolalbym tego unikac
+2. LISTA MIBÓW (jest malo paczek, maja pare lat, ale tutaj tez jest pomysl napisania wlasnej takiej funkcjonalnosci i proba opublikowania tego wlasnie w jednym z registrych)
 3. MININET PYTHON API (jest ytylko to bedzie wymagane do runnowania tylko na linuxie i sprawdzenie czy mininet jest zainstalowany)
 http://mininet.org/api/annotated.html
 

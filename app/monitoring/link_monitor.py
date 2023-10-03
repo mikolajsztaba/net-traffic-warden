@@ -5,6 +5,9 @@ import csv
 import time
 
 import psutil
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 # Funkcja do monitorowania łącza na danym PC i zapisywania wyników do pliku CSV

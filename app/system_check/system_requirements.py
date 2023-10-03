@@ -3,6 +3,9 @@ Check for mininet presence.
 """
 import platform
 import subprocess
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def is_mininet_installed():
@@ -36,7 +39,7 @@ def check_req():
     :return:
     """
     current_os = get_current_os()
-    (f"Current operating system: {current_os}")
+    logger.info(f"Current operating system: {current_os}")
 
     if current_os == "Linux":
         mininet_installed = is_mininet_installed()
