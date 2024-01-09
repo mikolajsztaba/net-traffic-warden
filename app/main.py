@@ -2,24 +2,15 @@
 TBD
 """
 import sys
-
-import click
 import logging
 
+import click
+
 from language import read_prompts_from_yaml
+from log.log_handler import setup_logging
 
-# logowanie ustawienia
-logging.basicConfig(filename='network_monitor.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-
-# Create a handler for console output
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-
-# Add the console handler to the root logger
-logging.getLogger().addHandler(console_handler)
+# ustawienie logowania
+setup_logging()
 
 
 @click.command()
