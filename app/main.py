@@ -8,21 +8,23 @@ import click
 
 from language import read_prompts_from_yaml
 from log.log_handler import setup_logging
+from wifi_dir.wifi_scan import wifi_scan, wifi_scan_test
 
 # ustawienie logowania
 setup_logging()
 
 
+
 @click.command()
 def main():
-    """CLI for network monitoring tool."""
+    """
+    CLI for network monitoring tool.
+    """
 
     # VARIABLES
     file_path = None
 
     while True:
-
-        logging.info("AAAAAAAAAAAAAAAA")
 
         # informacyjnie o 0 jako wyjściu z programu
         click.echo("In case you want to exit the program,"
@@ -37,36 +39,40 @@ def main():
                 "Choose your language (type number)", type=int)
 
             if language_choice == 0:
-                click.echo("Koniec programu.")
+                click.echo("The script is terminated.")
                 sys.exit(0)
             elif language_choice == 1:
                 file_path = 'app/language_schemas/prompts_english.yaml'
             elif language_choice == 2:
                 file_path = 'app/language_schemas/prompts_polish.yaml'
             else:
-                print(f"{language_choice} is an invalid choice."
+                print(f"{language_choice} is an invalid choice. "
                       f"Please try again.")
 
         # wczytanie promptów
         prompts = read_prompts_from_yaml(file_path)
-        print(prompts)
-        print(prompts["prompt-imie"])
 
         # opcje podstawowe w skrypcie
-        click.echo("Dostępne opcje:")
+        click.echo(prompts['available_options'])
         click.echo("1. Powitanie")
         click.echo("2. Kalkulator")
-        click.echo("0. Zakończ")
+        click.echo("3. Scapy testowe")
+        click.echo(prompts['wifi_scan'])
+        click.echo(prompts['termination'])
 
-        choice = click.prompt("Wybierz tryb (wpisz numer)", type=int)
+        choice = click.prompt(prompts['mode_type'], type=int)
 
         if choice == 0:
-            click.echo("Koniec programu.")
+            click.echo(prompts['farewell_message'])
             sys.exit(0)
         elif choice == 1:
             greet()
         elif choice == 2:
             calculate()
+        elif choice == 3:
+            wifi_scan_test()
+        elif choice == 4:
+            wifi_scan(prompts)
         else:
             click.echo("Nieprawidłowy wybór. Spróbuj ponownie.")
 

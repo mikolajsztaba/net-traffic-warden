@@ -3,13 +3,20 @@ TBD
 """
 import logging
 
+import datetime
 
 def setup_logging():
     """
     TBD
     """
-    # logowanie ustawienia
-    logging.basicConfig(filename='network_monitor.log', level=logging.INFO,
+
+    # calculating datetime
+    current_time = datetime.datetime.now()
+    date_format = "%d_%m_%Y--%H-%M"
+    formatted_date_format = current_time.strftime(date_format)
+
+    # logging settings
+    logging.basicConfig(filename=f'logs/network_monitor-{formatted_date_format}.log', level=logging.INFO,
                         format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Create a handler for console output

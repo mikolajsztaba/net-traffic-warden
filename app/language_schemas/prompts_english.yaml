@@ -1,2 +1,6 @@
-prompt-hej: Hello, how are you?
-prompt-imie: What is your name?
+available_options: "Available options: "
+wifi_scan: 4. Wifi scan option
+termination: 0. Terminate
+farewell_message: Thank You for using my tool!
+mode_type: "Choose mode (enter number) "
+address_wifi_input: "Provide an IP network address in x.x.x.x/y format: "

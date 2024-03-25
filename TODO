@@ -10,6 +10,17 @@ w ramach bedzie poszukane wiecej
 
 ogólnie: SCAPY, PYTHON, SUBPROCESS ITP.
 
+TODO 26.03:
+1) Przebadanie znajdowanie ilości urządzen
+2) Coś analizowanie wyników z wifi i wykrywanie nieprawidłowości (ta druga funkcja raportująca) np. pętla zapamiętywanie
+3) TOX + wyczyścić maina do klarownej postaci
+
+TODO 27.03:
+1) Dorobić, żeby nie było printów tylko wszystko już przechodziło na LOG odpowiednio z debug/info itp, aby było widoczne w plikach
+2) jakieś raporty z liczby urzadzen moze wykrywanie alertow ile urzadzen moze byc podlaczonych itp.
+3) Poprawa tego raportu z tej innej funkcji testowej zeby tez byl w formie tabeli i poprawa calej funkcji na klarowna
+
 TODO KIEDYS:
 - DOKONCZENIE TYCH PROMPTOW I JEZYKOW ALE DZIALA
+- NAPRAWA LOGÓW + zapisywanie ich osobno
 - DORZUCANIE DOCSTRINGÓW NA BIEZACO LUB POPRAWKA STARYCH
