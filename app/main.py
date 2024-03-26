@@ -2,7 +2,6 @@
 TBD
 """
 import sys
-import logging
 
 import click
 
@@ -12,7 +11,6 @@ from wifi_dir.wifi_scan import wifi_scan, wifi_scan_test
 
 # ustawienie logowania
 setup_logging()
-
 
 
 @click.command()
@@ -66,51 +64,15 @@ def main():
             click.echo(prompts['farewell_message'])
             sys.exit(0)
         elif choice == 1:
-            greet()
+            print("AAA")
         elif choice == 2:
-            calculate()
+            print("BBBB")
         elif choice == 3:
             wifi_scan_test()
         elif choice == 4:
             wifi_scan(prompts)
         else:
             click.echo("Nieprawidłowy wybór. Spróbuj ponownie.")
-
-
-def greet():
-    """Funkcja obsługująca tryb powitania."""
-    name = click.prompt("Podaj imię", type=str)
-    age = click.prompt("Podaj wiek", type=int)
-    greet_option = click.confirm("Pokazać powitanie?", default=True)
-
-    if greet_option:
-        click.echo(f'Witaj, {name}!')
-
-    click.echo(f'Twój wiek to {age} lat.')
-
-
-def calculate():
-    """Funkcja obsługująca tryb kalkulatora."""
-    number1 = click.prompt("Podaj pierwszą liczbę", type=float)
-    operator = click.prompt("Podaj operator (+, -, *, /)",
-                            type=click.Choice(['+', '-', '*', '/']))
-    number2 = click.prompt("Podaj drugą liczbę", type=float)
-
-    result = None
-    if operator == '+':
-        result = number1 + number2
-    elif operator == '-':
-        result = number1 - number2
-    elif operator == '*':
-        result = number1 * number2
-    elif operator == '/':
-        if number2 != 0:
-            result = number1 / number2
-        else:
-            click.echo("Błąd: Nie można dzielić przez zero.")
-            return
-
-    click.echo(f'Wynik: {result}')
 
 
 if __name__ == '__main__':

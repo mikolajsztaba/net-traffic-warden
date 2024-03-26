@@ -5,6 +5,7 @@ import logging
 
 import datetime
 
+
 def setup_logging():
     """
     TBD
@@ -16,7 +17,9 @@ def setup_logging():
     formatted_date_format = current_time.strftime(date_format)
 
     # logging settings
-    logging.basicConfig(filename=f'logs/network_monitor-{formatted_date_format}.log', level=logging.INFO,
+    logging.basicConfig(filename=f'logs/network_monitor-'
+                                 f'{formatted_date_format}.log',
+                        level=logging.INFO,
                         format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Create a handler for console output
