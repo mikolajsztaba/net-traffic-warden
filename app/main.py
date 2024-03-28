@@ -2,6 +2,7 @@
 TBD
 """
 import sys
+import logging
 
 import click
 
@@ -18,7 +19,6 @@ def main():
     """
     CLI for network monitoring tool.
     """
-
     # VARIABLES
     file_path = None
 
@@ -37,15 +37,17 @@ def main():
                 "Choose your language (type number)", type=int)
 
             if language_choice == 0:
-                click.echo("The script is terminated.")
+                logging.info("The script has been terminated.")
                 sys.exit(0)
             elif language_choice == 1:
                 file_path = 'app/language_schemas/prompts_english.yaml'
+                logging.info("The user has chosen the english language.")
             elif language_choice == 2:
                 file_path = 'app/language_schemas/prompts_polish.yaml'
+                logging.info("The user has chosen the polish language.")
             else:
-                print(f"{language_choice} is an invalid choice. "
-                      f"Please try again.")
+                logging.error("%s is an invalid choice. "
+                              "Please try again.", language_choice)
 
         # wczytanie promptów
         prompts = read_prompts_from_yaml(file_path)
@@ -64,15 +66,17 @@ def main():
             click.echo(prompts['farewell_message'])
             sys.exit(0)
         elif choice == 1:
-            print("AAA")
+            logging.info("FUNKCJA NUMER 1")
         elif choice == 2:
-            print("BBBB")
+            logging.info("FUNKCJA NUMER 2")
         elif choice == 3:
+            logging.info("The user has chosen the 3rd option.")
             wifi_scan_test()
         elif choice == 4:
+            logging.info("The user has chosen the wifi scan option. ")
             wifi_scan(prompts)
         else:
-            click.echo("Nieprawidłowy wybór. Spróbuj ponownie.")
+            logging.info("Wrong choice. Try again please...")
 
 
 if __name__ == '__main__':

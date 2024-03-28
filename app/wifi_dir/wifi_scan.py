@@ -54,21 +54,31 @@ def wifi_scan_test():
     """
     TBD
     """
-    # Wykonaj polecenie netsh
-    result = subprocess.run(['netsh', 'wlan', 'show', 'interfaces'],
+    command = ['netsh', 'wlan', 'show', 'interfaces']
+
+    result = subprocess.run(command,
                             capture_output=True, text=True, check=False)
 
-    #TODO: checkowanie tego return kodu
-
-    # Sprawdź czy wystąpiły błędy
     if result.returncode == 0:
-        # Przetwórz wyniki
+        logging.info("The command has been executed %s.",
+                     ' '.join(command))
+
+        # creating table
         networks_info = result.stdout.split('\n')
-        # print(networks_info)
+        networks_table = PrettyTable(["Property", "Value"])
+        networks_table.title = "Basic info about connected wifi network"
+
+        for line in networks_info[2:]:
+            if ":" in line:
+                property_name, value = line.split(":", 1)
+                networks_table.add_row([property_name.strip(), value.strip()])
+
+        logging.info("\n%s", networks_table)
+
         networks = []
         current_network = {}
+
         for line in networks_info:
-            print(line)
             if "SSID" in line:
                 current_network["SSID"] = line.split(":")[1].strip()
             elif "Signal" in line:
@@ -84,7 +94,7 @@ def wifi_scan_test():
         for network in networks:
             table.add_row([network['SSID'], network['Signal']])
 
-        logging.info(table)
-
+        logging.info("\n%s", table)
     else:
-        print("Wystąpił błąd podczas wykonania polecenia.")
+        logging.error("There was an error while executing: %s",
+                      ' '.join(command))
