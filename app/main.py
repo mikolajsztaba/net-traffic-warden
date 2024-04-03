@@ -9,6 +9,7 @@ import click
 from language import read_prompts_from_yaml
 from log.log_handler import setup_logging
 from wifi_dir.wifi_scan import wifi_scan, wifi_scan_test
+from api.vendor_mac import test_get_vendor
 
 # ustawienie logowania
 setup_logging()
@@ -75,6 +76,7 @@ def main():
         elif choice == 4:
             logging.info("The user has chosen the wifi scan option. ")
             wifi_scan(prompts)
+            test_get_vendor()
         else:
             logging.info("Wrong choice. Try again please...")
 

@@ -11,15 +11,19 @@ w ramach bedzie poszukane wiecej
 ogólnie: SCAPY, PYTHON, SUBPROCESS ITP.
 
 
-TODO 29.03:
+TODO 04.04:
 1) Spróbować włączać skanowanie na sieci 5 GHz i 2.4 GHz (w zależności od istniejących rozwiązań można ją spróbować rozdzielić na funkcje)
-2) próba zaciągnięcia prostego mechanizmu klasyfikacji na podstawie MAC czy znane czy nieznane i sa odrzucane
-3) klient do raportowania uzytkownikowi bledow sms/mail itp
+2) próba zaciągnięcia prostego mechanizmu klasyfikacji na podstawie MAC (zaciągnięcie do funkcji tej już istniejacej co zwraca maci)
+3) jezeli maci nie sa sklasyfikowane to jakas funkcja, ktora moze je odrzucac jezeli sa nieznane
 
-TODO 30.03:
+TODO 05.04:
 1) Coś analizowanie wyników z wifi i wykrywanie nieprawidłowości (ta druga funkcja raportująca) np. pętla zapamiętywanie
 2) kolejny feature wymyslic ktory chcialbym sie zajac
 3) minimalny pomyslec nad ML do klasyfikacja czy coś
+
+TODO 06.04:
+1) klient do raportowania uzytkownikowi bledow sms/mail itp
+2) blokowanie ruchu z danego IP np
 
 TODO KIEDYS:
 - DORZUCANIE DOCSTRINGÓW NA BIEZACO LUB POPRAWKA STARYCH
