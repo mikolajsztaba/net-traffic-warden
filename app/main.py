@@ -75,8 +75,8 @@ def main():
             wifi_scan_test()
         elif choice == 4:
             logging.info("The user has chosen the wifi scan option. ")
-            wifi_scan(prompts)
-            test_get_vendor()
+            full_devices = wifi_scan(prompts)
+            test_get_vendor(full_devices)
         else:
             logging.info("Wrong choice. Try again please...")
 

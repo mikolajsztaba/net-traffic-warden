@@ -1,6 +1,7 @@
 """
 TBD
 """
+import logging
 import time
 
 import requests
@@ -21,19 +22,24 @@ def get_vendor(mac_address):
         return f"Error: {error}"
 
 
-def test_get_vendor():
+def test_get_vendor(devices):
     """
     TBD
     """
-    test_addresses = ['18:34:af:a4:45:df',
-                      '38:ba:f8:77:de:09',
-                      '60:3e:5f:07:34:ff',
-                      'e6:77:d3:10:57:c1',
-                      'XYZ']
+    mac_addresses = [device['mac'] for device in devices]
 
-    for mac_address in test_addresses:
+    # defining empty list to be fulfilled with unknown mac addresses
+    unknown_addresses = []
+
+    unknown_addresses.append('ez')
+
+    for mac_address in mac_addresses:
         print(f"Analyzing MAC address: {mac_address}")
         vendor = get_vendor(mac_address)
+        if 'Failed to find' in vendor:
+            unknown_addresses.append(mac_address)
         print("Vendor:", vendor)
         print("-" * 50)
         time.sleep(1)
+
+    logging.warning("Unknown MAC addresses %s.", unknown_addresses)

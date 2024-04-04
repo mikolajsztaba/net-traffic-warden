@@ -45,7 +45,7 @@ def wifi_scan(prompts):
         for device in devices:
             table.add_row([device['ip'], device['mac']])
 
-        logging.info(table)
+        logging.info("\n%s", table)
 
     return devices
 
