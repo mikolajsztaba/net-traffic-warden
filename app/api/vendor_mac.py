@@ -34,12 +34,12 @@ def test_get_vendor(devices):
     unknown_addresses.append('ez')
 
     for mac_address in mac_addresses:
-        print(f"Analyzing MAC address: {mac_address}")
+        logging.info("Analyzing MAC address: %s", mac_address)
         vendor = get_vendor(mac_address)
         if 'Failed to find' in vendor:
             unknown_addresses.append(mac_address)
-        print("Vendor:", vendor)
-        print("-" * 50)
+        logging.info("Vendor: %s \n", vendor)
+
         time.sleep(1)
 
     logging.warning("Unknown MAC addresses %s.", unknown_addresses)
