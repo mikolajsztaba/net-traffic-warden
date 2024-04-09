@@ -48,37 +48,38 @@
 #
 # main()
 
-from pysnmp.hlapi import *
-
-# Parametry SNMP
-router_ip = '192.168.0.1'
-community_string = 'nazwa_dla_community_string'
-snmp_port = 161
-
-# Oid dla obciążenia pasma
-oid = ObjectIdentity('IF-MIB', 'ifInOctets', 1)  # Przykładowe OID dla obciążenia pasma (zależne od konkretnego routera)
-
-# Funkcja do pobierania danych SNMP
-def get_snmp_data(ip, oid, community_string, port=161):
-    iterator = getCmd(
-        SnmpEngine(),
-        CommunityData(community_string),
-        UdpTransportTarget((ip, port)),
-        ContextData(),
-        ObjectType(ObjectIdentity(oid))
-    )
-    error_indication, error_status, error_index, var_binds = next(iterator)
-    if error_indication:
-        print(error_indication)
-    elif error_status:
-        print('%s at %s' % (
-            error_status.prettyPrint(),
-            error_index and var_binds[int(error_index) - 1][0] or '?'
-        ))
-    else:
-        for varBind in var_binds:
-            value = varBind[1]
-            print(value)
-
-# Pobranie danych o obciążeniu pasma
-get_snmp_data(router_ip, oid, community_string, snmp_port)
+# from pysnmp.hlapi import *
+#
+# # Parametry SNMP
+# router_ip = '192.168.0.1'
+# community_string = 'nazwa_dla_community_string'
+# snmp_port = 161
+#
+# # Oid dla obciążenia pasma
+# oid = ObjectIdentity('IF-MIB', 'ifInOctets', 1)
+# Przykładowe OID dla obciążenia pasma (zależne od konkretnego routera)
+#
+# # Funkcja do pobierania danych SNMP
+# def get_snmp_data(ip, oid, community_string, port=161):
+#     iterator = getCmd(
+#         SnmpEngine(),
+#         CommunityData(community_string),
+#         UdpTransportTarget((ip, port)),
+#         ContextData(),
+#         ObjectType(ObjectIdentity(oid))
+#     )
+#     error_indication, error_status, error_index, var_binds = next(iterator)
+#     if error_indication:
+#         print(error_indication)
+#     elif error_status:
+#         print('%s at %s' % (
+#             error_status.prettyPrint(),
+#             error_index and var_binds[int(error_index) - 1][0] or '?'
+#         ))
+#     else:
+#         for varBind in var_binds:
+#             value = varBind[1]
+#             print(value)
+#
+# # Pobranie danych o obciążeniu pasma
+# get_snmp_data(router_ip, oid, community_string, snmp_port)

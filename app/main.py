@@ -9,6 +9,7 @@ import click
 from language import read_prompts_from_yaml
 from log.log_handler import setup_logging
 from wifi_dir.wifi_scan import wifi_scan, wifi_scan_test
+from wifi_dir.ddos_attack import ddos_execute
 from api.vendor_mac import test_get_vendor
 
 # ustawienie logowania
@@ -77,6 +78,8 @@ def main():
             logging.info("The user has chosen the wifi scan option. ")
             full_devices = wifi_scan(prompts)
             test_get_vendor(full_devices)
+        elif choice == 5:
+            ddos_execute()
         else:
             logging.info("Wrong choice. Try again please...")
 
