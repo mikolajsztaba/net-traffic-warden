@@ -84,7 +84,11 @@ def wifi_scan_test():
             elif "Signal" in line:
                 current_network["Signal"] = line.split(":")[1].strip()
                 networks.append(current_network)
-                current_network = {}
+
+        # tutaj beda alarmy do innych funkcji tez
+        if int(current_network["Signal"][:-1]) < 95:
+            print("AAAAAAAAAAAAAAA")
+
 
         # creating table for the results
         table = PrettyTable()

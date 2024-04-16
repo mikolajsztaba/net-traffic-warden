@@ -58,6 +58,7 @@ def main():
         click.echo(prompts['available_options'])
         click.echo("1. Powitanie")
         click.echo("2. Kalkulator")
+        # zostawiam, bo to bedzie zmienione
         click.echo("3. Scapy testowe")
         click.echo(prompts['wifi_scan'])
         click.echo(prompts['termination'])
@@ -79,7 +80,7 @@ def main():
             full_devices = wifi_scan(prompts)
             test_get_vendor(full_devices)
         elif choice == 5:
-            ddos_execute()
+            ddos_execute(prompts)
         else:
             logging.info("Wrong choice. Try again please...")
 
