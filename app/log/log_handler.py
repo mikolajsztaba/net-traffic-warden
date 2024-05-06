@@ -2,6 +2,7 @@
 TBD
 """
 import logging
+import os
 
 import datetime
 
@@ -30,3 +31,19 @@ def setup_logging():
 
     # Add the console handler to the root logger
     logging.getLogger().addHandler(console_handler)
+
+
+def clear_logs():
+    """
+    TBD
+    """
+    logs_dir = os.path.join(os.path.dirname(__file__), '../..', 'logs')
+    for file in os.listdir(logs_dir):
+        file_path = os.path.join(logs_dir, file)
+        try:
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+        except PermissionError:
+            pass
+
+    logging.info("All logs has been deleted.")

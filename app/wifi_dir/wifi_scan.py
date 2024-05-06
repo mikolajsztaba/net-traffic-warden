@@ -89,7 +89,6 @@ def wifi_scan_test():
         if int(current_network["Signal"][:-1]) < 95:
             print("AAAAAAAAAAAAAAA")
 
-
         # creating table for the results
         table = PrettyTable()
         table.title = "Wifi raport"

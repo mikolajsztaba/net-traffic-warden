@@ -7,7 +7,7 @@ import logging
 import click
 
 from language import read_prompts_from_yaml
-from log.log_handler import setup_logging
+from log.log_handler import setup_logging, clear_logs
 from wifi_dir.wifi_scan import wifi_scan, wifi_scan_test
 from wifi_dir.ddos_attack import ddos_execute
 from api.vendor_mac import test_get_vendor
@@ -29,6 +29,13 @@ def main():
         # informacyjnie o 0 jako wyjściu z programu
         click.echo("In case you want to exit the program,"
                    "please enter 0 in any prompt.")
+
+        delete_logs = click.prompt(
+            "If you want to delete previous logs type [t/f]",
+            type=bool)
+
+        if delete_logs:
+            clear_logs()
 
         while file_path is None:
             # wybór języka działania narzędzia

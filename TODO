@@ -11,18 +11,21 @@ w ramach bedzie poszukane wiecej
 ogólnie: SCAPY, PYTHON, SUBPROCESS ITP.
 
 
-TODO 11.04:
-1) Coś analizowanie wyników z wifi i wykrywanie nieprawidłowości (ta druga funkcja raportująca) np. pętla zapamiętywanie
+TODO 07.05:
+1) dodanie promptów w mainie po angielksu i po polsku
+2) poczytać o mibach
+3) Coś analizowanie wyników z wifi i wykrywanie nieprawidłowości (ta druga funkcja raportująca) np. pętla zapamiętywanie
 cd bo wyglada to narazie biednie, ale jakies takie alerty ustawiane przez uzytkownika z yamla najlepiej na początku
-2) Dorobić skanowanie jednocześnie do sieci 2.4 GHZ czy 5 GHZ
 
-TODO 18.04:
-1) blokowanie ruchu z danego IP np
-2) Wstępna wizualizacja danych
+TODO 08.05:
+1) Dorobić skanowanie jednocześnie do sieci 2.4 GHZ czy 5 GHZ
+2) ...
 
 TODO:
 WEEKEND:
 - klient do raportowania uzytkownikowi bledow sms/mail itp
+1) blokowanie ruchu z danego IP np
+2) Wstępna wizualizacja danych
 
 
 TODO KIEDYS:
