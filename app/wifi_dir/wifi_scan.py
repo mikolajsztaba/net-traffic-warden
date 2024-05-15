@@ -32,7 +32,7 @@ def wifi_scan(prompts):
         arp = ARP(pdst=user_input)
         ether = Ether(dst="ff:ff:ff:ff:ff:ff")
         packet = ether / arp
-        result = srp(packet, timeout=3, verbose=False)[0]
+        result = srp(packet, timeout=10, verbose=False)[0]
 
         for _, received in result:
             devices.append({'ip': received.psrc, 'mac': received.hwsrc})
