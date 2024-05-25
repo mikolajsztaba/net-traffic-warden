@@ -16,6 +16,7 @@ def setup_logging():
     current_time = datetime.datetime.now()
     date_format = "%d_%m_%Y--%H-%M"
     formatted_date_format = current_time.strftime(date_format)
+    print(formatted_date_format)
 
     # logging settings
     logging.basicConfig(filename=f'logs/network_monitor-'

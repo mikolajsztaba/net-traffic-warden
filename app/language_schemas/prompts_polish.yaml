@@ -3,4 +3,4 @@ wifi_scan: 4. Opcja skanowania sieci Wi-Fi
 termination: 0. Zakończ
 farewell_message: Dziękujemy za korzystanie z mojego narzędzia!
 mode_type: "Wybierz tryb (wpisz numer)"
-address_wifi_input: "Podaj adres sieciowy IP w formacie x.x.x.x/y: "
+address_wifi_input: "Podaj adres sieciowy IP w formacie x.x.x.x/y: " s

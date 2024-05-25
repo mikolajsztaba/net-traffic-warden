@@ -12,22 +12,28 @@ ogólnie: SCAPY, PYTHON, SUBPROCESS ITP.
 
 
 
-TODO 15.05:
-1) skonczenie konfiguracji kali czylio git itp.
-2) dodanie promptów w mainie po angielksu i po polsku
-
-TODO 16.05:
-1) dalsza kontynuacja nad ksiazka do pisania
-2) Coś analizowanie wyników z wifi i wykrywanie nieprawidłowości (ta druga funkcja raportująca) np. pętla zapamiętywanie
+TODO 26.05:
+1) dalsze pisanie ksiazki
+2) odpalenie toxa na tym (sam koniec)
+3) Coś analizowanie wyników z wifi i wykrywanie nieprawidłowości (ta druga funkcja raportująca) np. pętla zapamiętywanie
 cd bo wyglada to narazie biednie, ale jakies takie alerty ustawiane przez uzytkownika z yamla najlepiej na początku
-3) testowy run na kali roznych sieci itp.
+4) spiecie klientow sms/maili do dzialajacych juz funkcjonalnosci
+5) zastanawianie sie nad tym czy w tym skanowaniu paczek kiedy wypisywac adresy i jak
+
+TODO: 27.05:
+1) Wykrywanie ruchu niespodziewanego (bursty itp) i jego blokowanie
+2) spiecie klientow sms/maili do dzialajacych juz funkcjonalnosci
+3) cos z tym wychodzeniem ogarnac z funkcji tej paczek pobierania
+4) lamanie hasel wifi
+
 
 TODO:
 WEEKEND:
 1) blokowanie ruchu z danego IP np
 2) Wstępna wizualizacja danych
 3) miby co to
-4) dodanie promptów w mainie po angielksu i po polsku
+4) włamy do wifi itp
+
 
 
 TODO KIEDYS:
@@ -36,6 +42,7 @@ TODO KIEDYS:
 - minimalny pomyslec nad ML do klasyfikacja czy coś
 - Analiza wydajności sieci ( te miby)
 - sledzenie zasobow sieciowych
+- dodanie promptów w mainie po angielksu i po polsku (koncowka pracy)
 
 
 passy do maila:

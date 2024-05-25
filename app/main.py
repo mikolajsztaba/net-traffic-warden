@@ -11,6 +11,8 @@ from log.log_handler import setup_logging, clear_logs
 from wifi_dir.wifi_scan import wifi_scan, wifi_scan_test
 from wifi_dir.ddos_attack import ddos_execute
 from api.vendor_mac import test_get_vendor
+from wifi_dir.sniffing import start_sniffing
+from wifi_dir.connection_locate import monitor_packages
 
 # ustawienie logowania
 setup_logging()
@@ -69,6 +71,7 @@ def main():
         click.echo("3. Scapy testowe")
         click.echo(prompts['wifi_scan'])
         click.echo(prompts['termination'])
+        click.echo("6. Sniffing tych i blokowanie pakietow")
 
         choice = click.prompt(prompts['mode_type'], type=int)
 
@@ -88,6 +91,13 @@ def main():
             test_get_vendor(full_devices)
         elif choice == 5:
             ddos_execute(prompts)
+        elif choice == 6:
+            block_ips = click.prompt("Lista adresow, ktore chcesz blokowac (odziel przecinkami)")
+            block_ips = block_ips.split(',')
+            block_ips = [element.strip() for element in block_ips]
+            start_sniffing(block_ips)
+        elif choice == 7:
+            monitor_packages()
         else:
             logging.info("Wrong choice. Try again please...")
 

