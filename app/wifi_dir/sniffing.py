@@ -32,10 +32,3 @@ def start_sniffing(blocked_hosts):
         sniff(prn=check_traffic, filter="tcp or icmp", store=0)
     finally:
         cleanup()
-#
-# def main(blocked_ips):
-#     start_sniffing(blocked_ips)
-#
-# if __name__ == "__main__":
-#     blocked_ips = input("Lista adresów, które chcesz zablokować (oddzielone przecinkami): ").split(',')
-#     main(blocked_ips)

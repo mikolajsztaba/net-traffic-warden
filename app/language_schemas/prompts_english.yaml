@@ -4,3 +4,14 @@ termination: 0. Terminate
 farewell_message: Thank You for using my tool!
 mode_type: "Choose mode (enter number) "
 address_wifi_input: "Provide an IP network address in x.x.x.x/y format: "
+network_info: 1. Gathering internet network connection
+sniff_info: 2. Packet and traffic sniffing
+blocking_packets_info: 6. Sniffing and packet blocking
+package_location_monitoring: 7. Locating place of package downloading
+ddos_attack: 5. Performing DDOS attack
+local_resources: 8. Track local resources
+spotting_anomalies: 9. Spotting host and network anomalies
+scapy_prompt: 3. Scapy functionalities overview
+address_list: "List of addresses to be blocked (split by comma)"
+alert_countries: "List of countries to be alerted:"
+snmp_prompt: 10. SNMP Discovery Function in the Network

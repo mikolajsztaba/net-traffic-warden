@@ -1,6 +1,17 @@
 available_options: "Dostępne opcje: "
-wifi_scan: 4. Opcja skanowania sieci Wi-Fi
+wifi_scan: 4. Opcja skanowania WiFi
 termination: 0. Zakończ
-farewell_message: Dziękujemy za korzystanie z mojego narzędzia!
-mode_type: "Wybierz tryb (wpisz numer)"
-address_wifi_input: "Podaj adres sieciowy IP w formacie x.x.x.x/y: " s
+farewell_message: Dziękujemy za korzystanie z naszego narzędzia!
+mode_type: "Wybierz tryb (wprowadź numer): "
+address_wifi_input: "Podaj adres sieciowy w formacie x.x.x.x/y: "
+network_info: 1. Zbieranie informacji o połączeniu internetowym
+sniff_info: 2. Przechwytywanie pakietów i ruchu sieciowego
+blocking_packets_info: 6. Przechwytywanie i blokowanie pakietów
+package_location_monitoring: 7. Lokalizowanie miejsca pobierania pakietów
+ddos_attack: 5. Przeprowadzanie ataku DDOS
+local_resources: 8. Śledzenie zasobów lokalnych
+spotting_anomalies: 9. Wykrywanie anomalii hosta i sieci
+scapy_prompt: 3. Przegląd funkcjonalności Scapy
+address_list: "Lista adresów do zablokowania (oddzielone przecinkiem)"
+alert_countries: "Lista krajów do powiadomienia:"
+snmp_prompt: 10. Funkcja SNMP Discovery w sieci

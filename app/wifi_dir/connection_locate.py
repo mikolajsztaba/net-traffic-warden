@@ -3,6 +3,7 @@ import requests
 import signal
 import sys
 import time
+import logging
 
 
 def get_location_from_ip(ip_address):
@@ -30,7 +31,7 @@ def get_location_from_ip(ip_address):
     return location_info
 
 
-def monitor_packages():
+def monitor_packages(alert_countries):
     seen_ips = set()
 
     def signal_handler(sig, frame):
@@ -42,6 +43,7 @@ def monitor_packages():
     signal.signal(signal.SIGINT, signal_handler)
 
     while True:
+        logging.info("If you want to leave the sniffing mode, type ctrl+c")
         if stop:
             break
 
@@ -51,6 +53,9 @@ def monitor_packages():
                 ip_address = conn.raddr.ip
                 if ip_address not in seen_ips:
                     seen_ips.add(ip_address)
-                    print(f"Pobrane paczki: Adres IP: {ip_address}, Port: {conn.laddr.port}")
-                    get_location_from_ip(ip_address)
+                    logging.info(f"Pobrane paczki: Adres IP: {ip_address}, Port: {conn.laddr.port}")
+                    location_info = get_location_from_ip(ip_address)
+                    country = location_info['country']
+                    if country in alert_countries:
+                        logging.warning("Traffic from country specified as alert detected: %s", country)
         time.sleep(1)
